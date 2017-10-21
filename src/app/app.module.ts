@@ -28,7 +28,7 @@ import { TickerServiceProvider } from '../providers/ticker-service/ticker-servic
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    TickerServiceProvider
+    TickerServiceProvider,
   ]
 })
 export class AppModule {}
