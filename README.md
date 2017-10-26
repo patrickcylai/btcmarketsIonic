@@ -5,7 +5,7 @@ This ionic app connects to the BTC Markets net cryptocurrency trading platform a
 
 ## Build instructions
 
-This project requires Ionic framework to be installed along with the npm dependencies which are included in the '''package.json'''. 
+This project requires Ionic framework to be installed along with the npm dependencies which are included in the ***package.json***. 
 
 To install the dependencies, run the following command in the root directory of the project:
 
@@ -23,3 +23,6 @@ $ ionic serve
 
 Deployment of this project follows the standard instructions provided on the Ionic framework documentation.
 
+## Future Features
+ * Further integration with btcmarkets.net API to allow account management.
+ * Revamp of the UI to a more modern full-featured interface.
