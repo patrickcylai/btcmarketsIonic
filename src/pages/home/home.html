@@ -6,7 +6,7 @@
 </ion-navbar>
 </ion-header>
 
-<ion-content >
+<ion-content has-bouncing>
     <ion-grid>
         <!-- <ion-row> -->
             <!-- <ion-col> -->
@@ -15,7 +15,8 @@
                         <h2>Ethereum</h2>
                     </ion-card-header>
                     <ion-card-content>
-                        <h1>${{ this.tickerService.ethTick }}</h1>
+                        <h1>${{ ethData?.lastPrice }}</h1>
+                        <h3>Volume 24h: {{ ethData?.volume24h }}</h3>
                     </ion-card-content>
                 </ion-card>
             <!-- </ion-col> -->
@@ -25,7 +26,8 @@
                         <h2>Bitcoin</h2>
                     </ion-card-header>
                     <ion-card-content>
-                        <h1>${{ this.tickerService.btcTick }}</h1>
+                        <h1>${{ btcData?.lastPrice }}</h1>
+                        <h3>Volume 24h: {{ btcData?.volume24h }}</h3>                        
                     </ion-card-content>
                 </ion-card>
             <!-- </ion-col> -->
@@ -37,7 +39,8 @@
                         <h2>Ripple</h2>
                     </ion-card-header>
                     <ion-card-content>
-                        <h1>${{ this.tickerService.xrpTick }}</h1>
+                        <h1>${{ xrpData?.lastPrice }}</h1>
+                        <h3>Volume 24h: {{ xrpData?.volume24h }}</h3>                        
                     </ion-card-content>
                 </ion-card>
             <!-- </ion-col> -->
@@ -47,7 +50,8 @@
                         <h2>Litecoin</h2>
                     </ion-card-header>
                     <ion-card-content>
-                        <h1>${{ this.tickerService.ltcTick }}</h1>
+                        <h1>${{ ltcData?.lastPrice }}</h1>
+                        <h3>Volume 24h: {{ ltcData?.volume24h }}</h3>                        
                     </ion-card-content>
                 </ion-card>
             <!-- </ion-col> -->
@@ -59,7 +63,8 @@
                         <h2>Ethereum Classic</h2>
                     </ion-card-header>
                     <ion-card-content>
-                        <h1>${{ this.tickerService.etcTick }}</h1>
+                        <h1>${{ etcData?.lastPrice }}</h1>
+                        <h3>Volume 24h: {{ etcData?.volume24h }}</h3>                        
                     </ion-card-content>
                 </ion-card>
             <!-- </ion-col> -->
@@ -69,7 +74,8 @@
                         <h2>BCash</h2>
                     </ion-card-header>
                     <ion-card-content>
-                        <h1>${{ this.tickerService.bchTick }}</h1>
+                        <h1>${{ bchData?.lastPrice }}</h1>
+                        <h3>Volume 24h: {{ bchData?.volume24h }}</h3>                        
                     </ion-card-content>
                 </ion-card>
             <!-- </ion-col> -->
