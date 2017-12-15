@@ -7,79 +7,35 @@
 </ion-header>
 
 <ion-content has-bouncing>
-    <ion-grid>
-        <!-- <ion-row> -->
-            <!-- <ion-col> -->
-                <ion-card text-center>
-                    <ion-card-header>
-                        <h2>Ethereum</h2>
-                    </ion-card-header>
-                    <ion-card-content>
-                        <h1>${{ ethData?.lastPrice }}</h1>
-                        <h3>Volume 24h: {{ ethData?.volume24h }}</h3>
-                    </ion-card-content>
-                </ion-card>
-            <!-- </ion-col> -->
-            <!-- <ion-col> -->
-                <ion-card text-center>
-                    <ion-card-header>
-                        <h2>Bitcoin</h2>
-                    </ion-card-header>
-                    <ion-card-content>
-                        <h1>${{ btcData?.lastPrice }}</h1>
-                        <h3>Volume 24h: {{ btcData?.volume24h }}</h3>                        
-                    </ion-card-content>
-                </ion-card>
-            <!-- </ion-col> -->
-        <!-- </ion-row> -->
-        <!-- <ion-row> -->
-            <!-- <ion-col> -->
-                <ion-card text-center>
-                    <ion-card-header>
-                        <h2>Ripple</h2>
-                    </ion-card-header>
-                    <ion-card-content>
-                        <h1>${{ xrpData?.lastPrice }}</h1>
-                        <h3>Volume 24h: {{ xrpData?.volume24h }}</h3>                        
-                    </ion-card-content>
-                </ion-card>
-            <!-- </ion-col> -->
-            <!-- <ion-col> -->
-                <ion-card text-center>
-                    <ion-card-header>
-                        <h2>Litecoin</h2>
-                    </ion-card-header>
-                    <ion-card-content>
-                        <h1>${{ ltcData?.lastPrice }}</h1>
-                        <h3>Volume 24h: {{ ltcData?.volume24h }}</h3>                        
-                    </ion-card-content>
-                </ion-card>
-            <!-- </ion-col> -->
-        <!-- </ion-row> -->
-        <!-- <ion-row> -->
-            <!-- <ion-col> -->
-                <ion-card text-center>
-                    <ion-card-header>
-                        <h2>Ethereum Classic</h2>
-                    </ion-card-header>
-                    <ion-card-content>
-                        <h1>${{ etcData?.lastPrice }}</h1>
-                        <h3>Volume 24h: {{ etcData?.volume24h }}</h3>                        
-                    </ion-card-content>
-                </ion-card>
-            <!-- </ion-col> -->
-            <!-- <ion-col> -->
-                <ion-card text-center>
-                    <ion-card-header>
-                        <h2>BCash</h2>
-                    </ion-card-header>
-                    <ion-card-content>
-                        <h1>${{ bchData?.lastPrice }}</h1>
-                        <h3>Volume 24h: {{ bchData?.volume24h }}</h3>                        
-                    </ion-card-content>
-                </ion-card>
-            <!-- </ion-col> -->
-        <!-- </ion-row> -->
-    </ion-grid>
+    <ion-list>
+
+        <ion-item-group reorder="false">
+
+            <ion-item *ngFor="let tick of tickerData; let idx = index">
+                <h2>{{ tickerTitles[idx] }}</h2>
+                <ion-row>
+                    <ion-col col-5>
+                        <h1>${{ tick?.lastPrice }}</h1>
+                    </ion-col>
+                    <ion-col col-4>
+                        <h3>
+                            Ask:
+                            <b>{{ tick?.bestAsk }}</b> <br/>
+                            Bid:
+                            <b>{{ tick?.bestBid }}</b>
+                        </h3>
+                    </ion-col>
+                    <ion-col col-3>
+                        <h3 text-center>
+                            Volume 24h <br/>
+                            <b>{{ tick?.volume24h }}</b>
+                        </h3>                        
+                    </ion-col>
+                </ion-row>
+            </ion-item>
+
+        </ion-item-group>
+
+    </ion-list>
 
 </ion-content>

@@ -16,8 +16,7 @@ export class TickerServiceProvider {
   private apiUrl = "/api/market";
 
   constructor(public http: Http, private platform: Platform) {
-    // this.apiUrl = "https://api.btcmarkets.net/market";
-    if (this.platform.is('cordova') || this.platform.is('mobile')) {
+    if (this.platform.is('cordova')) { // change url if deploying
       this.apiUrl = "https://api.btcmarkets.net/market";
     }
   }

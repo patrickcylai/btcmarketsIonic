@@ -19,8 +19,20 @@ export class HomePage {
     ltcData: any;
     etcData: any;
     bchData: any;
+
+    tickerData: any;
+    tickerTitles: any;
     
     constructor(public navCtrl: NavController, public tickerService: TickerServiceProvider) {
+        this.tickerData = [];
+        this.tickerTitles = [
+            'Ethereum',
+            'Bitcoin',
+            'Ripple',
+            'Litecoin',
+            'Ethereum Classic',
+            'BCash'
+        ];
         this.counter = setInterval(this.load.bind(this), 1500); // set loop timing
     }
     
@@ -31,47 +43,67 @@ export class HomePage {
         this.getLtc()
         this.getEtc()
         this.getBch()
+        this.tickerData = [
+            this.ethData,
+            this.btcData,
+            this.xrpData,
+            this.ltcData,
+            this.etcData,
+            this.bchData
+        ];
     }
 
     getEth() {
         this.tickerService.getEth()
             .then(data => {
-                this.ethData = data;
+                if (data['lastPrice'] != undefined) {
+                    this.ethData = data;
+                }
             });
     }
 
     getBtc() {
         this.tickerService.getBtc()
             .then(data => {
-                this.btcData = data;
+                if (data['lastPrice'] != undefined) {
+                    this.btcData = data;
+                }
             });
     }
 
     getXrp() {
         this.tickerService.getXrp()
             .then(data => {
-                this.xrpData = data;
+                if (data['lastPrice'] != undefined) {
+                    this.xrpData = data;
+                }
             });
     }
 
     getLtc() {
         this.tickerService.getLtc()
             .then(data => {
-                this.ltcData = data;
+                if (data['lastPrice'] != undefined) {
+                    this.ltcData = data;
+                }
             });
     }
 
     getEtc() {
         this.tickerService.getEtc()
             .then(data => {
-                this.etcData = data;
+                if (data['lastPrice'] != undefined) {
+                    this.etcData = data;
+                }
             });
     }
 
     getBch() {
         this.tickerService.getBch()
             .then(data => {
-                this.bchData = data;
+                if (data['lastPrice'] != undefined) {
+                    this.bchData = data;
+                }
             });
     }
 }
