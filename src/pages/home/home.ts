@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { TickerServiceProvider } from '../../providers/ticker-service/ticker-service';
+import { AdMobFree, AdMobFreeBannerConfig } from '@ionic-native/admob-free';
 
 @Component({
     selector: 'page-home',
@@ -23,7 +24,8 @@ export class HomePage {
     tickerData: any;
     tickerTitles: any;
     
-    constructor(public navCtrl: NavController, public tickerService: TickerServiceProvider) {
+    constructor(public navCtrl: NavController, public tickerService: TickerServiceProvider, 
+        public admob: AdMobFree) {
         this.tickerData = [];
         this.tickerTitles = [
             'Ethereum',
@@ -33,6 +35,7 @@ export class HomePage {
             'Ethereum Classic',
             'BCash'
         ];
+        this.showBanner();
         this.counter = setInterval(this.load.bind(this), 1500); // set loop timing
     }
     
@@ -105,5 +108,24 @@ export class HomePage {
                     this.bchData = data;
                 }
             });
+    }
+
+    // AdMob Banner
+    showBanner() {
+        
+        let bannerConfig: AdMobFreeBannerConfig = {
+            isTesting: true, // Remove in production
+            autoShow: true,
+            bannerAtTop: false,
+            id: 'ca-app-pub-1621954105343720/2945962892',
+            size: 'BANNER'
+        };
+
+        this.admob.banner.config(bannerConfig);
+
+        this.admob.banner.prepare().then(() => {
+            // success
+        }).catch(e => console.log(e));
+        
     }
 }
