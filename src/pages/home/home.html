@@ -1,79 +1,41 @@
 <ion-header>
   <ion-navbar color="btcmarkets-color">
     <ion-title>
-      BTC Markets ticker
+      BTC Markets Ticker
   </ion-title>
 </ion-navbar>
 </ion-header>
 
-<ion-content >
-    <ion-grid>
-        <!-- <ion-row> -->
-            <!-- <ion-col> -->
-                <ion-card text-center>
-                    <ion-card-header>
-                        <h2>Ethereum</h2>
-                    </ion-card-header>
-                    <ion-card-content>
-                        <h1>${{ this.tickerService.ethTick }}</h1>
-                    </ion-card-content>
-                </ion-card>
-            <!-- </ion-col> -->
-            <!-- <ion-col> -->
-                <ion-card text-center>
-                    <ion-card-header>
-                        <h2>Bitcoin</h2>
-                    </ion-card-header>
-                    <ion-card-content>
-                        <h1>${{ this.tickerService.btcTick }}</h1>
-                    </ion-card-content>
-                </ion-card>
-            <!-- </ion-col> -->
-        <!-- </ion-row> -->
-        <!-- <ion-row> -->
-            <!-- <ion-col> -->
-                <ion-card text-center>
-                    <ion-card-header>
-                        <h2>Ripple</h2>
-                    </ion-card-header>
-                    <ion-card-content>
-                        <h1>${{ this.tickerService.xrpTick }}</h1>
-                    </ion-card-content>
-                </ion-card>
-            <!-- </ion-col> -->
-            <!-- <ion-col> -->
-                <ion-card text-center>
-                    <ion-card-header>
-                        <h2>Litecoin</h2>
-                    </ion-card-header>
-                    <ion-card-content>
-                        <h1>${{ this.tickerService.ltcTick }}</h1>
-                    </ion-card-content>
-                </ion-card>
-            <!-- </ion-col> -->
-        <!-- </ion-row> -->
-        <!-- <ion-row> -->
-            <!-- <ion-col> -->
-                <ion-card text-center>
-                    <ion-card-header>
-                        <h2>Ethereum Classic</h2>
-                    </ion-card-header>
-                    <ion-card-content>
-                        <h1>${{ this.tickerService.etcTick }}</h1>
-                    </ion-card-content>
-                </ion-card>
-            <!-- </ion-col> -->
-            <!-- <ion-col> -->
-                <ion-card text-center>
-                    <ion-card-header>
-                        <h2>BCash</h2>
-                    </ion-card-header>
-                    <ion-card-content>
-                        <h1>${{ this.tickerService.bchTick }}</h1>
-                    </ion-card-content>
-                </ion-card>
-            <!-- </ion-col> -->
-        <!-- </ion-row> -->
-    </ion-grid>
+<ion-content has-bouncing>
+    <ion-list>
+
+        <ion-item-group reorder="false">
+
+            <ion-item *ngFor="let tick of tickerData; let idx = index">
+                <h2>{{ tickerTitles[idx] }}</h2>
+                <ion-row>
+                    <ion-col col-5>
+                        <h1>{{ tick?.lastPrice | currency: "AUD": true }}</h1>
+                    </ion-col>
+                    <ion-col col-4>
+                        <h3>
+                            Ask:
+                            <b>{{ tick?.bestAsk | currency: "AUD": true }}</b> <br/>
+                            Bid:
+                            <b>{{ tick?.bestBid | currency: "AUD": true }}</b>
+                        </h3>
+                    </ion-col>
+                    <ion-col col-3>
+                        <h3 text-center>
+                            Volume 24h <br/>
+                            <b>{{ tick?.volume24h }}</b>
+                        </h3>                        
+                    </ion-col>
+                </ion-row>
+            </ion-item>
+
+        </ion-item-group>
+
+    </ion-list>
 
 </ion-content>

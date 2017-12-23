@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
+import { Platform } from 'ionic-angular/platform/platform';
 // import * as Io from 'socket.io-client';
 
 /*
@@ -12,16 +13,12 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class TickerServiceProvider {
 
-  private apiUrl: string;
-  ethTick: number;
-  btcTick: number;
-  xrpTick: number;
-  ltcTick: number;
-  etcTick: number;
-  bchTick: number;
+  private apiUrl = "/api/market";
 
-  constructor(public http: Http) {
-    this.apiUrl = "https://api.btcmarkets.net/market";
+  constructor(public http: Http, private platform: Platform) {
+    if (this.platform.is('cordova')) { // change url if deploying
+      this.apiUrl = "https://api.btcmarkets.net/market";
+    }
   }
 
   getEth() {
@@ -31,8 +28,7 @@ export class TickerServiceProvider {
       this.http.get(url)
         .map(res => res.json())
         .subscribe(data => {
-          this.ethTick = data.lastPrice;
-          resolve(this.ethTick);
+          resolve(data);
         });
     });
   }
@@ -44,8 +40,7 @@ export class TickerServiceProvider {
       this.http.get(url)
         .map(res => res.json())
         .subscribe(data => {
-          this.btcTick = data.lastPrice;
-          resolve(this.btcTick);
+          resolve(data);
         });
     });
   }
@@ -56,8 +51,7 @@ export class TickerServiceProvider {
       this.http.get(url)
         .map(res => res.json())
         .subscribe(data => {
-          this.xrpTick = data.lastPrice;
-          resolve(this.xrpTick);
+          resolve(data);
         });
     });
   }
@@ -68,8 +62,7 @@ export class TickerServiceProvider {
       this.http.get(url)
         .map(res => res.json())
         .subscribe(data => {
-          this.ltcTick = data.lastPrice;
-          resolve(this.ltcTick);
+          resolve(data);
         });
     });
   }
@@ -80,8 +73,7 @@ export class TickerServiceProvider {
       this.http.get(url)
         .map(res => res.json())
         .subscribe(data => {
-          this.etcTick = data.lastPrice;
-          resolve(this.etcTick);
+          resolve(data);
         });
     });
   }
@@ -93,8 +85,7 @@ export class TickerServiceProvider {
       this.http.get(url)
         .map(res => res.json())
         .subscribe(data => {
-          this.bchTick = data.lastPrice;
-          resolve(this.bchTick);
+          resolve(data);
         });
     });
   }
