@@ -1,41 +1,49 @@
 <ion-header>
-  <ion-navbar color="btcmarkets-color">
-    <ion-title>
-      BTC Markets Ticker
-  </ion-title>
-</ion-navbar>
+    <ion-navbar color="btcmarkets-color">
+        <ion-title>
+            BTC Markets Ticker
+        </ion-title>
+    </ion-navbar>
 </ion-header>
 
-<ion-content has-bouncing>
-    <ion-list>
-
-        <ion-item-group reorder="false">
-
-            <ion-item *ngFor="let tick of tickerData; let idx = index">
-                <h2>{{ tickerTitles[idx] }}</h2>
-                <ion-row>
-                    <ion-col col-5>
-                        <h1>${{ tick?.lastPrice }}</h1>
-                    </ion-col>
-                    <ion-col col-4>
-                        <h3>
-                            Ask:
-                            <b>{{ tick?.bestAsk }}</b> <br/>
-                            Bid:
-                            <b>{{ tick?.bestBid }}</b>
-                        </h3>
-                    </ion-col>
-                    <ion-col col-3>
-                        <h3 text-center>
-                            Volume 24h <br/>
-                            <b>{{ tick?.volume24h }}</b>
-                        </h3>                        
-                    </ion-col>
-                </ion-row>
-            </ion-item>
-
-        </ion-item-group>
-
-    </ion-list>
-
+<ion-content>
+    <ion-grid>
+        <ion-row *ngFor="let tick of tickerData; let idx = index">
+            <ion-card (tap)="toggleData(idx)">
+                <button ion-item>
+                <ion-card-header>
+                    <h2>{{ tickerTitles[idx].name }}</h2>
+                </ion-card-header>
+                <ion-card-content text-center>
+                    <h1>{{ tick?.lastPrice | currency: "AUD": true }}</h1>
+                    <div *ngIf="tickerTitles[idx].details">
+                        <ion-row>
+                            <ion-col col-4>
+                                <h3>
+                                    Ask:
+                                    <br/>
+                                    <b>{{ tick?.bestAsk | currency: "AUD": true }}</b>
+                                </h3>
+                            </ion-col>
+                            <ion-col col-4>
+                                <h3>
+                                    Bid:
+                                    <br/>
+                                    <b>{{ tick?.bestBid | currency: "AUD": true }}</b>
+                                </h3>
+                            </ion-col>
+                            <ion-col col-4>
+                                <h3>
+                                    Volume 24h
+                                    <br/>
+                                    <b>{{ tick?.volume24h | number }}</b>
+                                </h3>
+                            </ion-col>
+                        </ion-row>
+                    </div>
+                </ion-card-content>
+                </button>
+            </ion-card>
+        </ion-row>
+    </ion-grid>
 </ion-content>

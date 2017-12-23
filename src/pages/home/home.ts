@@ -26,12 +26,12 @@ export class HomePage {
     constructor(public navCtrl: NavController, public tickerService: TickerServiceProvider) {
         this.tickerData = [];
         this.tickerTitles = [
-            'Ethereum',
-            'Bitcoin',
-            'Ripple',
-            'Litecoin',
-            'Ethereum Classic',
-            'BCash'
+            {name: 'Ethereum', details: false},
+            {name: 'Bitcoin', details: false},
+            {name: 'Ripple', details: false},
+            {name: 'Litecoin', details: false},
+            {name: 'Ethereum Classic', details: false},
+            {name: 'BCash', details: false}
         ];
         this.counter = setInterval(this.load.bind(this), 1500); // set loop timing
     }
@@ -105,5 +105,9 @@ export class HomePage {
                     this.bchData = data;
                 }
             });
+    }
+
+    toggleData(idx) {
+        this.tickerTitles[idx].details = !this.tickerTitles[idx].details;
     }
 }

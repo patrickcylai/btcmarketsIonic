@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.plinc.btcmarketsticker" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.plinc.btcmarketsticker" version="0.1.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>BTC Markets Ticker</name>
     <description>An app that links you with BTC Markets tickers</description>
     <author email="patrickcylai@gmail.com" href="https://patricklai.net">Patrick Lai</author>
